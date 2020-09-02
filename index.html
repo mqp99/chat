@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat</title>
+	<link rel="stylesheet" href="chat.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css" crossorigin>
+</head>
+<body>
+	<div id="app">
+		<div class="chat">
+			<div class="chat__head">
+				<span>Chat Room</span>
+				<span>Hello: <b class="welcome-u">Khách</b> <i class="fal fa-comment-alt-edit edit-name"></i></span>
+			</div>
+			<div class="chat__box">
+			</div>
+			<div class="chat__input">
+				<input type="text" placeholder="Aa..." id="valueMess">
+				<button id="sendMess"><i class="fas fa-caret-right"></i></button>
+			</div>
+		</div>
+		<div class="popup">
+			<div class="popup__setName">
+				<div class="popup-head">
+					<h4>Nhập tên để chat:</h4>
+					<i class="fal fa-times"></i>
+				</div>
+				<input type="text" placeholder="Ẩn danh" id="valueName">
+				<button id="setName">Chat now</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.0/firebase.js"></script>
+	<script src="chat.js"></script>
+</body>
+</html>
