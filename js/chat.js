@@ -14,10 +14,11 @@ firebase.initializeApp(firebaseConfig);
 var innerName = $('.welcome-u');
 var name = localStorage.getItem('username');
 if(localStorage.getItem('username') === null) {
-	var name = prompt('Tên bạn là gì:', 'Ẩn danh');
+	var nameRan = randomName(10);
+	var name = prompt('Tên bạn là gì:', nameRan);
 	var name = name.trim();
 	if (name == 'null' || name == '' || name === null) {
-		localStorage.setItem('username', 'Ẩn danh');
+		localStorage.setItem('username', nameRan);
 	}else if (name) {
 		localStorage.setItem('username', name);
 	}
@@ -68,4 +69,14 @@ firebase.database().ref('chat').on('child_added', function (snapshot){
         scrollTop: $('.chat__body')[0].scrollHeight
     }, 100);
 })
-innerName.html(localStorage.getItem('username'))
+innerName.html(localStorage.getItem('username'));
+function randomName(length) {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+console.log();
