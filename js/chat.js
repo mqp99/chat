@@ -22,6 +22,16 @@ if(localStorage.getItem('username') === null) {
 		localStorage.setItem('username', name);
 	}
 }
+innerName.on('click', function (e) {
+	var name = prompt('Bạn muốn đổi tên thành gì:', localStorage.getItem('username')); 
+	var name = $.trim(name);
+	if (name == 'null' || name == '' || name === null) {
+		localStorage.setItem('username', localStorage.getItem('username'));
+	}else if (name) {
+		localStorage.setItem('username', name);
+	}
+	innerName.html(localStorage.getItem('username'));
+});
 $('#sendMess').on('click', function (e) {
 	var name = localStorage.getItem('username');
     var valueMess = $('#valMess').val().trim();
@@ -80,4 +90,3 @@ function randomName(length) {
    }
    return result;
 }
-console.log();
