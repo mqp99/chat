@@ -46,15 +46,20 @@ $('#sendMess').on('click', function (e) {
 });
 $('#valMess').on('keyup', function (event){
 	var name = localStorage.getItem('username');
-	if(event.keyCode === 13) {
-		var valueMess = $(this).val().trim();
-   		if(valueMess != '') {
-		    firebase.database().ref('chat').push().set({
-		        name: name,
-		        mess: valueMess
-		    })
-		    $('#valMess').val('');
-   		}
+	var valueMess = $(this).val().trim();
+	var valueLength = valueMess.length;
+	if(valueLength >= 1) {
+		$('#sendMess').addClass('allowed');
+	}else{
+		$('#sendMess').removeClass('allowed');
+	}
+	if(event.keyCode === 13 && valueMess != '') {
+	    firebase.database().ref('chat').push().set({
+	        name: name,
+	        mess: valueMess
+	    })
+    	$('#sendMess').removeClass('allowed');
+    	$('#valMess').val('');
 	}
 })
 
