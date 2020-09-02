@@ -39,7 +39,7 @@ body {
   display: inline-block;
   clear: both;
   border-radius: 5px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 .chat .chat__body li.him {
   position: relative;
