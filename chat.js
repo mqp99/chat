@@ -11,7 +11,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Ref Firebase
-var ref = firebase.database().ref("chat");
+// var ref = firebase.database().ref("chat");
 
 if(localStorage.getItem('username') === null) {
 	$('.popup').addClass('show');
@@ -65,14 +65,13 @@ function checkName(valueName) {
 }
 function checkMess(valueMess) {
 	var name = localStorage.getItem('username');
-    var idMess = random(8) + '-' + random(4) + '-' + random(20);
-    firebase.database().ref('chat/' + idMess).set({
+    firebase.database().ref('chat').push().set({
         name: name,
         mess: valueMess
     })
     $('#valueMess').val('');
 }
-ref.on('child_added', function (snapshot){
+firebase.database().ref('chat').on('child_added', function (snapshot){
 	var message = snapshot.val();
 	if(message.name == localStorage.getItem('username')) {
 		var html =` <div class="chat__box--content you">
@@ -90,13 +89,3 @@ ref.on('child_added', function (snapshot){
         scrollTop: $('.chat__box')[0].scrollHeight
     }, 100);
 })
-// Random string
-function random(length) {
-   var result           = '';
-   var characters       = '1234567890';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
-}
