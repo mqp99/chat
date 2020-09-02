@@ -12,7 +12,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // Get name user chat
 var innerName = $('.welcome-u');
-var name = localStorage.getItem('username');
 if(localStorage.getItem('username') === null) {
 	var nameRan = randomName(10);
 	var name = prompt('Tên bạn là gì:', nameRan);
@@ -24,6 +23,7 @@ if(localStorage.getItem('username') === null) {
 	}
 }
 $('#sendMess').on('click', function (e) {
+	var name = localStorage.getItem('username');
     var valueMess = $('#valMess').val().trim();
     if(valueMess != '') {
 	    firebase.database().ref('chat').push().set({
@@ -35,6 +35,7 @@ $('#sendMess').on('click', function (e) {
     e.preventDefault();
 });
 $('#valMess').on('keyup', function (event){
+	var name = localStorage.getItem('username');
 	if(event.keyCode === 13) {
 		var valueMess = $(this).val().trim();
    		if(valueMess != '') {
