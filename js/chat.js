@@ -10,8 +10,13 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-// Get name user chat
+
+/**  Get name user chat */
+
 var innerName = $('.welcome-u');
+
+/**  Set name first */
+
 if(localStorage.getItem('username') === null) {
 	var nameRan = randomName(10);
 	var name = prompt('Tên bạn là gì:', nameRan);
@@ -22,6 +27,9 @@ if(localStorage.getItem('username') === null) {
 		localStorage.setItem('username', name);
 	}
 }
+
+/**  PRESS `name` to change name */
+
 innerName.on('click', function (e) {
 	var name = prompt('Bạn muốn đổi tên thành gì:', localStorage.getItem('username')); 
 	var name = $.trim(name);
@@ -32,7 +40,10 @@ innerName.on('click', function (e) {
 	}
 	innerName.html(localStorage.getItem('username'));
 });
-$('#sendMess').on('click', function (e) {
+
+/**  ADD DATA IF PRESS `button` */
+
+$(document).on('click','#sendMess', function (e) {
 	var name = localStorage.getItem('username');
     var valueMess = $('#valMess').val().trim();
     if(valueMess != '') {
@@ -44,7 +55,10 @@ $('#sendMess').on('click', function (e) {
 	}
     e.preventDefault();
 });
-$('#valMess').on('keyup', function (event){
+
+/**  ADD DATA IF PRESS `enter` */
+
+$(document).on('keyup','#valMess', function (event){
 	var name = localStorage.getItem('username');
 	var valueMess = $(this).val().trim();
 	var valueLength = valueMess.length;
@@ -63,29 +77,47 @@ $('#valMess').on('keyup', function (event){
 	}
 })
 
+
+$(document).on('click','.chat-content',function() {
+	_chatID = $(this).attr('data-id');
+	firebase.database().ref('chat').child(_chatID).remove();
+})
+
+firebase.database().ref('chat').on('child_removed', function (snapshot){
+	$(`#message-${snapshot.key}`).html('<i>Message has been removed!</i>');
+})
+
+
+/**  FETCH DATA ON CHANGE */
+
 firebase.database().ref('chat').on('child_added', function (snapshot){
 	var message = snapshot.val();
 	if(message.name == localStorage.getItem('username')) {
-		var html =` <li class="me">
-						<div class="chat-content">
-							<div class="c-mess">${message.mess}</div>
-						</div>
-					</li>`;
+		var html =` 
+			<li class="me">
+				<div class="chat-content" data-id="${snapshot.key}" id="message-${snapshot.key}">
+					<div class="c-mess">${message.mess}</div>
+				</div>
+			</li>`;
 	}else{
-		var html =` <li class="him">
-						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQn6-5fW9aIGRGKn2lwvzYZQs8FQO6hmUD_AA&usqp=CAU" alt="">
-						<div class="chat-content">
-							<div class="c-name">${message.name}</div>
-							<div class="c-mess">${message.mess}</div>
-						</div>
-					</li>`;
+		var html =` 
+			<li class="him">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQn6-5fW9aIGRGKn2lwvzYZQs8FQO6hmUD_AA&usqp=CAU" alt="">
+				<div class="chat-content" data-id="${snapshot.key}">
+					<div class="c-name">${message.name}</div>
+					<div class="c-mess">${message.mess}</div>
+				</div>
+			</li>`;
 	}
-	$('.chat__body').append(html);
-	$('.chat__body').animate({
-        scrollTop: $('.chat__body')[0].scrollHeight
-    }, 100);
+	$('.chat__body').append(html).animate({ scrollTop: $('.chat__body')[0].scrollHeight }, 0);
 })
+
+/**  INNER NAME Eg: Hello: user */
+
 innerName.html(localStorage.getItem('username'));
+
+/** RANDOM NAME */
+
 function randomName(length) {
    var result           = '';
    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
