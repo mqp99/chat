@@ -33,6 +33,7 @@ body {
   height: 400px;
   margin: 0;
   padding: 10px;
+  overflow-y: scroll;
 }
 .chat .chat__body li {
   display: inline-block;
