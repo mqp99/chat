@@ -102,8 +102,10 @@ button {
 .auth__group--input {
   width: 100%;
   padding: 10px;
+  border-radius: 0;
   background: #e8e8e8;
   border: 1px solid #e2e2e2;
+  background-clip: padding-box;
   transition: border 0.2s ease-in-out, background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .auth__group--input:active, .auth__group--input:focus {
