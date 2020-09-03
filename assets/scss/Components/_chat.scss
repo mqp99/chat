@@ -63,6 +63,7 @@
 		justify-content: space-between;
 		.button-setting,
 		.button-sign-out {
+			width: 30px;
 			font-size: 1em;
 			background: transparent;
 			border: 1px solid transparent;
@@ -125,6 +126,7 @@
 					object-fit: cover;
 			  	}
 				.chat-content {
+					position: relative;
 					padding: 8px 10px;
 					margin-left: 5px;
 					border-radius: 5px;
@@ -133,6 +135,16 @@
 						position: relative;
 						top: -3px;
 						font-size: 12px;
+					}
+					.c-mess {
+						padding-bottom: 10px;
+					}
+					.c-time {
+						position: absolute;
+						font-size: 10px;
+						right: 5px;
+						bottom: 3px;
+						color: #777;
 					}
 				}
 			}
@@ -178,7 +190,7 @@
 			cursor: not-allowed;
 			position: absolute;
 			right: 10px;
-			top: 13px;
+			top: 12px;
 			color: #FF5722;
 			font-size: 1.2em;
 			border: 1px solid transparent;
