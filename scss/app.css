@@ -110,6 +110,7 @@ button {
 }
 .auth__group--input:active, .auth__group--input:focus {
   background: transparent;
+  background-clip: padding-box;
   border: 1px solid rgba(96, 125, 139, 0.9);
   box-shadow: 0 0 0 3px rgba(96, 125, 139, 0.32);
 }
@@ -123,6 +124,7 @@ button {
 }
 .auth__group--button:hover {
   background: #207dc7;
+  border: 1px solid #207dc7;
 }
 .auth__group--button.button-si-w {
   margin-bottom: 5px;

@@ -108,6 +108,7 @@ button {
 			&:active,
 			&:focus {
 				background: transparent;
+				background-clip: padding-box;
 				border: 1px solid rgb(96 125 139 / 90%);
 				box-shadow: 0 0 0 3px rgb(96 125 139 / 32%);
 			}
@@ -121,6 +122,7 @@ button {
 			transition: background .2s ease-in-out;
 			&:hover {
 				background: #207dc7;
+				border: 1px solid #207dc7;
 			}
 			&.button-si-w {
 				margin-bottom: 5px;
