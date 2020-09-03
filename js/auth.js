@@ -59,7 +59,7 @@ $(function(){
 				// 'emailVerified': user.emailVerified
 			}
 			localStorage.setItem('user-profile', JSON.stringify(profile));
-			if(lastPathname == '/index.html' && lastPathname == '') {
+			if(lastPathname == 'index.html' || lastPathname == '') {
 				window.location.href = 'chat.html';
 			}
 		}
