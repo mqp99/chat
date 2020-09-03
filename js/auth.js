@@ -12,7 +12,7 @@ $(function(){
 	const btnSignOut = $('.button-sign-out');
 	const btnSignInWithGG = $('.button-si-w-gg');
 	const btnSignInWithFB = $('.button-si-w-fb');
-
+	const lastPathname = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
 	// Initialize Firebase
 	firebase.initializeApp(firebaseConfig);
 
@@ -59,10 +59,9 @@ $(function(){
 				// 'emailVerified': user.emailVerified
 			}
 			localStorage.setItem('user-profile', JSON.stringify(profile));
-			if(window.location.pathname == '/index.html') {
+			if(lastPathname == '/index.html' && lastPathname == '') {
 				window.location.href = 'chat.html';
 			}
 		}
 	})
-	console.log(window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
 })
