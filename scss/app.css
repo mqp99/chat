@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #262626;
+  font-size: 1em;
+  line-height: 1.5;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+.normal-link {
+  color: #2196F3;
+  font-size: 0.85em;
+  text-decoration: none;
+}
+.normal-link:hover {
+  color: #247fc7;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.jc-between {
+  justify-content: space-between;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+/**
+ *	CSS App here
+*/
+#app {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+/**
+ *	CSS Login here
+*/
+.auth {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  padding: 20px 30px;
+  background: #fff;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0.8rem 0.2rem rgba(0, 0, 0, 0.15);
+}
+.auth__title {
+  margin: 10px 0;
+}
+.auth__intro {
+  color: #888;
+  font-size: 0.85em;
+  margin-bottom: 10px;
+}
+.auth__box {
+  display: none;
+}
+.auth__group {
+  margin-bottom: 15px;
+}
+.auth__group.hr {
+  position: relative;
+  border-bottom: 1px solid #ddd;
+}
+.auth__group.hr:before {
+  position: absolute;
+  content: "or";
+  top: -10px;
+  left: 50%;
+  width: 40px;
+  color: #888;
+  background: #fff;
+  font-size: 0.85em;
+  text-align: center;
+  transform: translateX(-50%);
+}
+.auth__group--input {
+  width: 100%;
+  padding: 10px;
+  background: #e8e8e8;
+  border: 1px solid #e2e2e2;
+  transition: border 0.2s ease-in-out, background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.auth__group--input:active, .auth__group--input:focus {
+  background: transparent;
+  border: 1px solid rgba(96, 125, 139, 0.9);
+  box-shadow: 0 0 0 3px rgba(96, 125, 139, 0.32);
+}
+.auth__group--button {
+  padding: 10px;
+  color: #fff;
+  width: 100%;
+  background: #2196F3;
+  border: 1px solid #2196F3;
+  transition: background 0.2s ease-in-out;
+}
+.auth__group--button:hover {
+  background: #207dc7;
+}
+.auth__group--button.button-si-w {
+  margin-bottom: 5px;
+  position: relative;
+  color: #555;
+  background: transparent;
+  border: 1px solid #ccc;
+}
+.auth__group--button.button-si-w img {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 10px;
+  top: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .auth {
+    top: 40%;
+    left: 0;
+    width: 100%;
+    box-shadow: none;
+    transform: translateX(0) translateY(-35%);
+  }
+}
