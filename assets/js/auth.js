@@ -1,20 +1,10 @@
 $(function(){
-	const firebaseConfig = {
-		apiKey: "AIzaSyCjSPkaazfq0ECJtrjfCY2CtsIqLloG7ks",
-		authDomain: "fir-e68f8.firebaseapp.com",
-		databaseURL: "https://fir-e68f8.firebaseio.com",
-		projectId: "fir-e68f8",
-		storageBucket: "fir-e68f8.appspot.com",
-		messagingSenderId: "570241805881",
-		appId: "1:570241805881:web:51d8c21095f85b6ea727e8",
-		measurementId: "G-QGYL626X0M"
-	};
+	
 	const btnSignOut = $('.button-sign-out');
 	const btnSignInWithGG = $('.button-si-w-gg');
 	const btnSignInWithFB = $('.button-si-w-fb');
 	const lastPathname = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
+
 
 	$('.open-box').on('click', function () {
 		$('.open-box').slideUp();
@@ -25,12 +15,8 @@ $(function(){
 	btnSignInWithFB.on('click', function signInWithFacebook(){
 		// new Firebase auth
 		var provider = new firebase.auth.FacebookAuthProvider();
-		firebase.auth().signInWithPopup(provider)
-				.then(result => {
-					console.log(result);
-					console.log('Login fb');
-				})
-				.catch(err => { console.log(err); });
+		// open popup login
+		firebase.auth().signInWithPopup(provider).catch(err => { console.log(err); });
 	})
 
 	// Sign in with GOOGLE accout

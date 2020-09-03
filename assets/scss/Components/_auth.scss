@@ -1,60 +1,3 @@
-* {
-	box-sizing: border-box;
-}
-*:focus {
-	outline: none;
-}
-
-html {
-	height: 100%;
-}
-
-body {
-	margin: 0;
-	padding: 0;
-	color: #262626;
-	font-size: 1em;
-	line-height: 1.5;
-	font-family: Helvetica, Arial, sans-serif;
-}
-
-button {
-	cursor: pointer;
-}
-
-.normal-link {
-	color: #2196F3;
-	font-size: .85em;
-	text-decoration: none;
-	&:hover {
-		color: #247fc7;
-	}
-}
-
-.d-flex {
-	display: flex;
-}
-
-.jc-between {
-	justify-content: space-between;
-}
-.ai-center {
-	align-items: center;
-}
-
-/**
- *	CSS App here
-*/
-
-#app {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #fff;
-}
-
 /**
  *	CSS Login here
 */
@@ -139,15 +82,5 @@ button {
 				}
 			}
 		}
-	}
-}
-
-@media screen and (max-width: 500px) {
-	.auth {
-		top: 40%;
-		left: 0;
-		width: 100%;
-		box-shadow: none;
-		transform: translateX(0) translateY(-35%);
 	}
 }
