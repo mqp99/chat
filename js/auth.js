@@ -25,6 +25,7 @@ $(function(){
 		firebase.auth()
 			.signOut()
 			.then(() => {
+
 				var profile = {
 					'uid': '',
 					'email': '',
@@ -32,9 +33,13 @@ $(function(){
 					'fullname': '',
 					// 'emailVerified': user.emailVerified
 				}
+
 				localStorage.setItem('user-profile', JSON.stringify(profile));
-				if(window.location.pathname == '/chat.html') {
+
+				if(lastPathname == 'chat.html') {
+
 					window.location.href = 'index.html';
+
 				}
 			})
 	})
@@ -49,8 +54,10 @@ $(function(){
 				console.log(err);
 			})
 	})
+
 	firebase.auth().onAuthStateChanged(user => {
 		if(user) {
+
 			var profile = {
 				'uid': user.uid,
 				'email': user.email,
@@ -58,9 +65,13 @@ $(function(){
 				'fullname': user.displayName,
 				// 'emailVerified': user.emailVerified
 			}
+
 			localStorage.setItem('user-profile', JSON.stringify(profile));
+
 			if(lastPathname == 'index.html' || lastPathname == '') {
+
 				window.location.href = 'chat.html';
+
 			}
 		}
 	})
