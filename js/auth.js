@@ -64,5 +64,5 @@ $(function(){
 			}
 		}
 	})
-	console.log(window.location.pathname.split('/'));
+	console.log(window.location.href.substring(window.location.href.lastIndexOf('/') + 1));
 })
